@@ -34,5 +34,9 @@ func main() {
 		return nil
 	})
 
+	app.Use(func(c *fiber.Ctx) error {
+		return c.SendStatus(404)
+	})
+
 	log.Fatal(app.Listen(":3000"))
 }
