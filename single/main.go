@@ -19,5 +19,9 @@ func main() {
 		return c.SaveFile(file, fmt.Sprintf("./%s", file.Filename))
 	})
 
+	app.Use(func(c *fiber.Ctx) error {
+		return c.SendStatus(404)
+	})
+
 	log.Fatal(app.Listen(":3000"))
 }
